@@ -12,6 +12,7 @@ public class Player {
 		for (int i = 0; i < rays.length; i++) {
 			double rayDir = vector.dir - fov / 2 + i * innerRayAngle;
 			rays[i] = new Ray(new Vector2(vector.x, vector.y, rayDir)).cast(map);
+			// System.out.println(i + " - " + rays[i]);
 		}
 	}
 
