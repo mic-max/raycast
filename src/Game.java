@@ -37,7 +37,7 @@ public class Game extends Canvas implements Runnable {
 
 		g = image.getGraphics();
 
-		player = new Player(new Vector2(200, 220, Math.PI / 4));
+		player = new Player(new Vector2(200, 220, Math.PI / 3));
 
 		map = new Map("res/level/map1.txt");
 	}
@@ -87,7 +87,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void update() {
-		// player.vector.dir = player.vector.dir - Math.PI / 4000;
+		player.vector.dir -= Math.PI / 400; // modulus by 2PI?
 		// player.vector.y += .1;
 	}
 
@@ -105,12 +105,11 @@ public class Game extends Canvas implements Runnable {
 		g.fillRect(0, getHeight() / 2, getWidth(), getHeight());
 
 		player.castRays(map);
-		// draw lines
 		g.setColor(Color.BLACK);
 		for (int i = 0; i < player.rays.length; i++) {
-			int sliceHeight = (int) (Map.SIZE / player.rays[i] * player.ppd);
-			int f = HEIGHT / 2 - sliceHeight / 8;
-			g.drawLine(i, f, i, f + sliceHeight / 4);
+			int sliceHeight = (int) (Map.SIZE / player.rays[i] * player.ppd / 2); // random division
+			int f = HEIGHT / 2 - sliceHeight / 2;
+			g.drawLine(i, f, i, f + sliceHeight);
 		}
 
 		g.dispose();
