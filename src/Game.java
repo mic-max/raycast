@@ -87,8 +87,9 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void update() {
-		player.vector.dir -= Math.PI / 400; // modulus by 2PI?
-		// player.vector.y += .1;
+		player.vector.dir += Math.PI / 500;
+		// player.vector.dir %= (Math.PI * 2);
+		// player.vector.y += 1;
 	}
 
 	public void render() {
