@@ -56,7 +56,6 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 
-	@Override
 	public void run() {
 		final double NS_PER_UPDATE = 1000000000D / 60D;
 		long timer = System.currentTimeMillis();
@@ -87,9 +86,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void update() {
-		player.vector.dir += Math.PI / 500;
-		// player.vector.dir %= (Math.PI * 2);
-		// player.vector.y += 1;
+		player.vector.dir += Math.PI / 400;
 	}
 
 	public void render() {
@@ -100,9 +97,9 @@ public class Game extends Canvas implements Runnable {
 		}
 		g = bs.getDrawGraphics();
 
-		g.setColor(new Color(56, 56, 56)); // ceiling
+		g.setColor(new Color(56, 56, 56));
 		g.fillRect(0, 0, getWidth(), getHeight() / 2);
-		g.setColor(new Color(112, 112, 112)); // floor
+		g.setColor(new Color(112, 112, 112));
 		g.fillRect(0, getHeight() / 2, getWidth(), getHeight());
 
 		player.castRays(map);

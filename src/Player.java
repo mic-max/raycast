@@ -11,9 +11,12 @@ public class Player {
 	public void castRays(Map map) {
 		for (int i = 0; i < rays.length; i++) {
 			double rayDir = vector.dir + fov / 2 - i * innerRayAngle;
-			// rayDir = vector.dir; // debugging
+			if (rayDir > Math.PI * 2)
+				rayDir -= Math.PI * 2;
+			else if (rayDir < 0)
+				rayDir += Math.PI * 2;
 			rays[i] = new Ray(new Vector2(vector.x, vector.y, rayDir)).cast(map);
-			rays[i] *= Math.cos(vector.dir - rayDir); // fixes fish-eye effect
+			rays[i] *= Math.cos(vector.dir - rayDir);
 		}
 	}
 

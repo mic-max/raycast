@@ -7,8 +7,4 @@ public class Vector2 {
 		this.y = y;
 		this.dir = dir;
 	}
-
-	public String toString() {
-		return "(" + x + ", " + y + ") [" + dir + "]";
-	}
 }
